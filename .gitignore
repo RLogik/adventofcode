@@ -1,0 +1,12 @@
+*
+!/.gitignore
+
+!/main.py
+!/__init__.py
+!/run.sh
+
+!/problems
+!/problems/*.py
+
+!/data
+!/data/*.in
