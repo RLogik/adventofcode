@@ -10,14 +10,19 @@ from typing import Callable;
 from typing import List;
 
 from problems.day1 import main as day1;
+from problems.day2 import main as day2;
+from problems.day3 import main as day3;
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # MAIN METHOD
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def main():
-    call_method('Tag 1', day1, 'data/day1.in', year=2020, tuple_size=2);
+    call_method('Tag 1',  day1, 'data/day1.in', year=2020, tuple_size=2);
     call_method('Tag 1*', day1, 'data/day1.in', year=2020, tuple_size=3);
+    call_method('Tag 2',  day2, 'data/day2.in', oldpolicy=True);
+    call_method('Tag 2*', day2, 'data/day2.in', oldpolicy=False);
+    call_method('Tag 3',  day3, 'data/day3.in');
     return;
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
