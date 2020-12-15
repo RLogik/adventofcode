@@ -7,17 +7,20 @@
 
 import re;
 from numpy import asarray;
+from typing import Any;
 from typing import List;
 from typing import Tuple;
+
+from problems.checkresult import checkresult;
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # MAIN METHOD
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def main(lines: List[str], oldpolicy: bool, **kwargs):
+def main(lines: List[str], testmode: bool, expected: Any, oldpolicy: bool, **kwargs):
     values = extract_data(lines);
-    solutions = check_validity(values, oldpolicy);
-    display_solutions(solutions);
+    valid = check_validity(values, oldpolicy);
+    display_solutions(testmode, expected, valid);
     return;
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -26,37 +29,36 @@ def main(lines: List[str], oldpolicy: bool, **kwargs):
 
 def extract_data(lines: List[str]) -> List[Tuple[int,int,str,List[str]]]:
     values = [];
-    for _ in lines:
+    for k, _ in enumerate(lines):
         pattern = r'^\s*(0|[1-9]\d*)\-(0|[1-9]\d*)\s*(\S):\s*(\S*)\s*$';
         m = re.match(pattern, _);
         if not m:
             continue;
-        i = int(m.group(1));
-        j = int(m.group(2));
-        a  = m.group(3);
-        w  = re.split(r'', m.group(4));
-        values.append((i, j, a, w));
+        # NOTE: Indexes müssen um 1 verringert werden, da 1 -> n ~~> 0 -> n-1
+        values.append((int(m.group(1)) - 1, int(m.group(2)) - 1, m.group(3), [__ for __ in m.group(4)]));
     return values;
 
 def check_validity(values: List[Tuple[int,int,str,List[str]]], oldpolicy: bool) -> List[bool]:
     n = len(values);
     if oldpolicy:
         freq = [len([u for u in w if u == a]) for _, _, a, w in values];
-        solutions = [values[k][0] <= freq[k] and freq[k] <= values[k][1] for k in range(n)];
+        valid = [values[k][0] <= freq[k] and freq[k] <= values[k][1] for k in range(n)];
     else:
         letterOne = asarray([(1*(w[i] == a) if i < len(w) else 0) for i, _, a, w in values]);
         letterTwo = asarray([(1*(w[j] == a) if j < len(w) else 0) for _, j, a, w in values]);
-        solutions = ((letterOne + letterTwo) % 2 == 1).tolist();
-    return solutions;
+        ## gültig <==> genau einer der Buchstaben
+        valid = ((letterOne + letterTwo) % 2 == 1).tolist();
+    return valid;
 
-def display_solutions(solutions: List[bool]):
-    n = len(solutions);
-    n_correct = sum(solutions);
-    print('  Es gab \033[92;1m{n}\033[0m Fälle:\n  - \033[4;1m{correct}\033[0m korrekt\n  - \033[4;1m{incorrect}\033[0m inkorrekt'.format(
+def display_solutions(testmode: bool, expected: Any, valid: List[bool]):
+    n = len(valid);
+    result = sum(valid);
+    print('  Es gab \033[92;1m{n}\033[0m Codes und davon sind \033[4;1m{result}\033[0m korrekt.'.format(
         n=n,
-        correct=n_correct,
-        incorrect=n-n_correct
+        result=result,
     ));
+    if testmode:
+        checkresult(expected, result);
     return;
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
