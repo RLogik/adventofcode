@@ -29,7 +29,7 @@ def main(lines: List[str], testmode: bool, expected: Any, oldpolicy: bool, **kwa
 
 def extract_data(lines: List[str]) -> List[Tuple[int,int,str,List[str]]]:
     values = [];
-    for k, _ in enumerate(lines):
+    for _ in lines:
         pattern = r'^\s*(0|[1-9]\d*)\-(0|[1-9]\d*)\s*(\S):\s*(\S*)\s*$';
         m = re.match(pattern, _);
         if not m:

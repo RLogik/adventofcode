@@ -8,11 +8,13 @@
 import re;
 from typing import Callable;
 from typing import List;
+from yaml import load;
+from yaml import FullLoader;
 
 from problems.day1 import main as day1;
 from problems.day2 import main as day2;
 from problems.day3 import main as day3;
-# from problems.day4 import main as day4;
+from problems.day4 import main as day4;
 # from problems.day5 import main as day5;
 # from problems.day6 import main as day6;
 # from problems.day7 import main as day7;
@@ -45,83 +47,30 @@ from problems.day3 import main as day3;
 # GLOBAL VARIABLES
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-TESTMODE = False;
-DATAPATH = 'data' if not TESTMODE else 'testdata'
+TESTMODE    = False;
+FILE_CONFIG = 'config.yml';
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # MAIN METHOD
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 def main():
-    call_method(True,  'Tag 1',   day1,  '{}/day1.in'.format(DATAPATH),  testmode=TESTMODE, expected=514579,             year=2020, tuple_size=2);
-    call_method(True,  'Tag 1*',  day1,  '{}/day1.in'.format(DATAPATH),  testmode=TESTMODE, expected=241861950,          year=2020, tuple_size=3);
-    call_method(True,  'Tag 2',   day2,  '{}/day2.in'.format(DATAPATH),  testmode=TESTMODE, expected=2,                  oldpolicy=True);
-    call_method(True,  'Tag 2*',  day2,  '{}/day2.in'.format(DATAPATH),  testmode=TESTMODE, expected=1,                  oldpolicy=False);
-    call_method(False, 'Tag 3',   day3,  '{}/day3.in'.format(DATAPATH),  testmode=TESTMODE, expected=([7], 7),           directions=[(3, 1)], show_path=TESTMODE);
-    call_method(False, 'Tag 3*',  day3,  '{}/day3.in'.format(DATAPATH),  testmode=TESTMODE, expected=([2,7,3,4,2], 336), directions=[(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)], show_path=False);
-    # call_method(False, 'Tag 4',   day4,  '{}/day4.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 4*',  day4,  '{}/day4.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 5',   day5,  '{}/day5.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 5*',  day5,  '{}/day5.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 6',   day6,  '{}/day6.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 6*',  day6,  '{}/day6.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 7',   day7,  '{}/day7.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 7*',  day7,  '{}/day7.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 8',   day8,  '{}/day8.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 8*',  day8,  '{}/day8.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 9',   day9,  '{}/day9.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 9*',  day9,  '{}/day9.in'.format(DATAPATH),  testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 10',  day10, '{}/day10.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 10*', day10, '{}/day10.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 11',  day11, '{}/day11.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 11*', day11, '{}/day11.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 12',  day12, '{}/day12.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 12*', day12, '{}/day12.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 13',  day13, '{}/day13.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 13*', day13, '{}/day13.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 14',  day14, '{}/day14.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 14*', day14, '{}/day14.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 15',  day15, '{}/day15.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 15*', day15, '{}/day15.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 16',  day16, '{}/day16.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 16*', day16, '{}/day16.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 17',  day17, '{}/day17.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 17*', day17, '{}/day17.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 18',  day18, '{}/day18.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 18*', day18, '{}/day18.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 19',  day19, '{}/day19.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 19*', day19, '{}/day19.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 20',  day20, '{}/day20.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 20*', day20, '{}/day20.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 21',  day21, '{}/day21.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 21*', day21, '{}/day21.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 22',  day22, '{}/day22.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 22*', day22, '{}/day22.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 23',  day23, '{}/day23.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 23*', day23, '{}/day23.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 24',  day24, '{}/day24.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 24*', day24, '{}/day24.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 25',  day25, '{}/day25.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 25*', day25, '{}/day25.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 26',  day26, '{}/day26.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 26*', day26, '{}/day26.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 27',  day27, '{}/day27.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 27*', day27, '{}/day27.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 28',  day28, '{}/day28.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 28*', day28, '{}/day28.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 29',  day29, '{}/day29.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 29*', day29, '{}/day29.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 30',  day30, '{}/day30.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 30*', day30, '{}/day30.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 31',  day31, '{}/day31.in'.format(DATAPATH), testmode=TESTMODE, expected=);
-    # call_method(False, 'Tag 31*', day31, '{}/day31.in'.format(DATAPATH), testmode=TESTMODE, expected=);
+    config = read_config();
+    for case in config['testcases' if TESTMODE else 'cases'] or []:
+        title           = case['title'];
+        method          = eval(case['method']);
+        path            = case['path'];
+        remove_comments = case['remove_comments'];
+        expected        = (case['expected'] or dict(value=None))['value'] if TESTMODE else None;
+        params          = case['params'] or {};
+        call_method(title=title, f=method, path=path, remove_comments=remove_comments, testmode=TESTMODE, expected=expected, **params);
     return;
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # SECONDARY METHODS
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-def call_method(remove_comments: bool, title: str, f: Callable, path: str, **kwargs):
+def call_method(title: str, f: Callable, path: str, remove_comments: bool, **kwargs):
     print('\n[\033[94;1mINFO\033[0m] {}'.format(title));
     lines = read_file(path=path, remove_comments=remove_comments);
     f(lines, **kwargs);
@@ -138,6 +87,14 @@ def read_file(path: str, remove_comments: bool = True) -> List[str]:
     if remove_comments:
         lines = [_ for _ in lines if not re.match(r'^\s*#', _)];
     return lines;
+
+def read_config() -> dict:
+    fname = FILE_CONFIG;
+    with open(fname, 'r') as fp:
+        spec = load(fp, Loader=FullLoader);
+        if not isinstance(spec, dict):
+            raise ValueError('Config is not a dictionary object!');
+        return spec;
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 # EXECUTION

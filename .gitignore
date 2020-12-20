@@ -5,6 +5,7 @@
 !/README.md
 !/main.py
 !/__init__.py
+!/*.yml
 
 !/problems
 !/problems/*.py
