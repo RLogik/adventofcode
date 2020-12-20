@@ -131,7 +131,7 @@ def check_validity(passports: pd.DataFrame) -> pd.DataFrame:
     passports.eyr = pd.to_numeric(passports.eyr, errors='coerce');
     passports = passports.astype(dict(eyr='Int32'));
 
-    check_cm = matches_pattern(r'^(0|[1-9]\d*)(?:cm|)$', int, in_interval(150, 193));
+    check_cm = matches_pattern(r'^(0|[1-9]\d*)cm$', int, in_interval(150, 193));
     check_in = matches_pattern(r'^(0|[1-9]\d*)in$', int, in_interval(59, 76));
     passports.valid = passports.apply(lambda row: row.valid and (check_cm(row.hgt) or check_in(row.hgt)), axis=1);
 

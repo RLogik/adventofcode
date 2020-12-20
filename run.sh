@@ -1,3 +1,4 @@
 #!/bin/bash
 
-python3.9 main.py;
+SCRIPTARGS="$@";
+python3.9 main.py $SCRIPTARGS;

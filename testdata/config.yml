@@ -1,0 +1,201 @@
+info:
+  description: Testfälle.
+cases:
+  - title: "[Test] Tag 1"
+    index: 1
+    method: day1
+    remove_comments: true
+    path: testdata/day1.in
+    expected:
+      value: 514579
+    params:
+      year: 2020
+      tuple_size: 2
+  - title: "[Test] Tag 1*"
+    index: 1
+    method: day1
+    path: testdata/day1.in
+    remove_comments: true
+    expected:
+      value: 241861950
+    params:
+      year: 2020
+      tuple_size: 3
+  - title: "[Test] Tag 2"
+    index: 2
+    method: day2
+    path: testdata/day2.in
+    remove_comments: true
+    expected:
+      value: 2
+    params:
+      oldpolicy: true
+  - title: "[Test] Tag 2*"
+    index: 2
+    method: day2
+    path: testdata/day2.in
+    remove_comments: true
+    expected:
+      value: 1
+    params:
+      oldpolicy: false
+  - title: "[Test] Tag 3"
+    index: 3
+    method: day3
+    path: testdata/day3.in
+    remove_comments: false
+    expected:
+      value: !!python/tuple [[7], 7]
+    params:
+      directions: [ !!python/tuple [3, 1] ]
+      show_path: true
+  - title: "[Test] Tag 3*"
+    index: 3
+    method: day3
+    path: testdata/day3.in
+    remove_comments: false
+    expected:
+      value: !!python/tuple [ [2,7,3,4,2], 336 ]
+    params:
+      directions: [ !!python/tuple [1, 1], !!python/tuple [3, 1], !!python/tuple [5, 1], !!python/tuple [7, 1], !!python/tuple [1, 2] ]
+      show_path: false
+  - title: "[Test] Tag 4"
+    index: 4
+    method: day4
+    path: testdata/day4.in
+    remove_comments: false
+    expected:
+      value: 2
+    params:
+      simple_check: true
+      show_passports: true
+  - title: "[Test] Tag 4*"
+    index: 4
+    method: day4
+    path: testdata/day4.in
+    remove_comments: false
+    expected:
+      value: 2
+    params:
+      simple_check: false
+      show_passports: true
+  - title: "[Test] Tag 4*"
+    index: 4
+    method: day4
+    path: testdata/day4a.in
+    remove_comments: false
+    expected:
+      value: 0
+    params:
+      simple_check: false
+      show_passports: false
+  - title: "[Test] Tag 4*"
+    index: 4
+    method: day4
+    path: testdata/day4b.in
+    remove_comments: false
+    expected:
+      value: 6
+    params:
+      simple_check: false
+      show_passports: false
+  - title: "[Test] Tag 4*"
+    index: 4
+    method: day4
+    path: testdata/day4c.in
+    remove_comments: false
+    expected:
+      value: 0
+    params:
+      simple_check: false
+      show_passports: false
+  - title: "[Test] Tag 4*"
+    index: 4
+    method: day4
+    path: testdata/day4d.in
+    remove_comments: false
+    expected:
+      value: 4
+    params:
+      simple_check: false
+      show_passports: false
+  - title: "[Test] Tag 5a"
+    index: 5
+    method: day5
+    content: |-2
+      FBFBBFFRLR
+    remove_comments: true
+    expected:
+      value: 357
+    params:
+      first_part: true
+      show_boardingcodes: true
+  - title: "[Test] Tag 5b"
+    index: 5
+    method: day5
+    content: |-2
+      BFFFBBFRRR
+    remove_comments: true
+    expected:
+      value: 567
+    params:
+      first_part: true
+      show_boardingcodes: true
+  - title: "[Test] Tag 5c"
+    index: 5
+    method: day5
+    content: |-2
+      FFFBBBFRRR
+    remove_comments: true
+    expected:
+      value: 119
+    params:
+      first_part: true
+      show_boardingcodes: true
+  - title: "[Test] Tag 5d"
+    index: 5
+    method: day5
+    content: |-2
+      BBFFBBFRLL
+    remove_comments: true
+    expected:
+      value: 820
+    params:
+      first_part: true
+      show_boardingcodes: true
+  - title: "[Test] Tag 6a"
+    index: 6
+    method: day6
+    path: testdata/day6a.in
+    remove_comments: true
+    expected:
+      value: 6
+    params:
+      mode: any
+  - title: "[Test] Tag 6b"
+    index: 6
+    method: day6
+    path: testdata/day6b.in
+    remove_comments: true
+    expected:
+      value: 11
+    params:
+      mode: any
+  - title: "[Test] Tag 6a*"
+    index: 6
+    method: day6
+    path: testdata/day6a.in
+    remove_comments: true
+    expected:
+      value: 3
+    params:
+      mode: all
+  - title: "[Test] Tag 6b*"
+    index: 6
+    method: day6
+    path: testdata/day6b.in
+    remove_comments: true
+    expected:
+      value: 6
+    params:
+      mode: all

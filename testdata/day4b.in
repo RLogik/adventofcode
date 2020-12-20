@@ -1,15 +1,11 @@
-byr:2002
-iyr: 2020
-eyr: 2030
-hgt:60in
-hcl:#123abc
-ecl:brn
-pid:000000001
+byr:2002 pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 hcl:#623a2f
 
-byr:2002
-iyr: 2020
-eyr: 2030
-hgt:190cm
-hcl:#123abc
-ecl:brn
-pid:000000001
+hgt:60in pid:087499704 ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+
+hgt:190cm pid:087499704 ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+
+hcl:#123abc pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
+
+ecl:brn pid:087499704 hgt:74in iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+
+pid:000000001 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f

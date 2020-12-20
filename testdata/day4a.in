@@ -1,25 +1,13 @@
-byr:2003
-hgt:190in
-hcl:#123abz
-hcl:123abc
-ecl:wat
-pid:0123456789
+byr:2003 pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 hcl:#623a2f
 
-byr:2003
-hgt:190
-hcl:#123abz
-hcl:123abc
-ecl:wat
-pid:0123456789
+hgt:190in pid:087499704 ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
 
-byr:2003
-hgt:190in
-hcl:#123abz
-ecl:wat
-pid:0123456789
+hgt:190 pid:087499704 ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
 
-byr:2003
-hgt:190
-hcl:123abc
-ecl:wat
-pid:0123456789
+hcl:#123abz pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
+
+hcl:123abc pid:087499704 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980
+
+ecl:wat pid:087499704 hgt:74in iyr:2012 eyr:2030 byr:1980 hcl:#623a2f
+
+pid:0123456789 hgt:74in ecl:grn iyr:2012 eyr:2030 byr:1980 hcl:#623a2f

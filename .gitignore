@@ -14,3 +14,4 @@
 !/data/*.in
 !/testdata
 !/testdata/*.in
+!/testdata/*.yml
