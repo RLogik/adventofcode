@@ -93,3 +93,21 @@ cases:
     remove_comments: true
     params:
       mode: all
+  - title: "Tag 7"
+    index: 7
+    method: day7
+    path: data/day7.in
+    remove_comments: true
+    params:
+      first_part: true
+      show_bags: false
+      bag: shiny gold
+  - title: "Tag 7*"
+    index: 7
+    method: day7
+    path: data/day7.in
+    remove_comments: true
+    params:
+      first_part: false
+      show_bags: false
+      bag: shiny gold

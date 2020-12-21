@@ -199,3 +199,36 @@ cases:
       value: 6
     params:
       mode: all
+  - title: "[Test] Tag 7"
+    index: 7
+    method: day7
+    path: testdata/day7a.in
+    remove_comments: true
+    expected:
+      value: 4
+    params:
+      first_part: true
+      show_bags: true
+      bag: shiny gold
+  - title: "[Test] Tag 7*"
+    index: 7
+    method: day7
+    path: testdata/day7a.in
+    remove_comments: true
+    expected:
+      value: 32
+    params:
+      first_part: false
+      show_bags: true
+      bag: shiny gold
+  - title: "[Test] Tag 7*"
+    index: 7
+    method: day7
+    path: testdata/day7b.in
+    remove_comments: true
+    expected:
+      value: 126
+    params:
+      first_part: false
+      show_bags: true
+      bag: shiny gold

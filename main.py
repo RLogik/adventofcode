@@ -19,7 +19,7 @@ from problems.day3 import main as day3;
 from problems.day4 import main as day4;
 from problems.day5 import main as day5;
 from problems.day6 import main as day6;
-# from problems.day7 import main as day7;
+from problems.day7 import main as day7;
 # from problems.day8 import main as day8;
 # from problems.day9 import main as day9;
 # from problems.day10 import main as day10;
